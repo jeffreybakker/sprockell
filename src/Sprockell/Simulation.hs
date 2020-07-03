@@ -106,7 +106,7 @@ listenForFirstConnect = withSocketsDo $ do
     addrinfos <- getAddrInfo
                     (Just (defaultHints {addrFlags = [AI_PASSIVE], addrSocketType = Stream}))
                     (Just "127.0.0.1")
-                    Nothing -- pick any free port
+                    (Just "1235") -- pick any free port
     let serveraddr = head addrinfos
     sock <- socket (addrFamily serveraddr) Stream defaultProtocol
     bind sock (addrAddress serveraddr)
